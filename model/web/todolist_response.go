@@ -1,9 +1,9 @@
 package web
 
 type TodoListResponse struct {
-	Id          int
-	Title       string
-	Description string
-	Thumbnail   string
-	Priority    int
+	Id          int    `json:"id"`
+	Title       string `json:"title"`
+	Description string `json:"desc"`
+	Thumbnail   string `json:"thumbnail"`
+	Priority    int    `json:priority`
 }

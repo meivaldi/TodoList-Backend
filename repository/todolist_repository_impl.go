@@ -11,6 +11,10 @@ import (
 type TodoListRepositoryImpl struct {
 }
 
+func NewTodoListRepository() TodoListRepository {
+	return &TodoListRepositoryImpl{}
+}
+
 func (repository *TodoListRepositoryImpl) Save(ctx context.Context, tx *sql.Tx, todoList domain.TodoList) domain.TodoList {
 	statement := "INSERT INTO todolist(title, description, thumbnail, priority) VALUES(?, ?, ?, ?)"
 	result, err := tx.ExecContext(ctx, statement, todoList.Title, todoList.Description, todoList.Thumbnail, todoList.Priority)
@@ -54,7 +58,7 @@ func (repository *TodoListRepositoryImpl) FindById(ctx context.Context, tx *sql.
 }
 
 func (repository *TodoListRepositoryImpl) FindAll(ctx context.Context, tx *sql.Tx) []domain.TodoList {
-	statement := "SELECT id, titile, description, thumbnail, priority FROM todolist"
+	statement := "SELECT id, title, description, thumbnail, priority FROM todolist"
 	rows, err := tx.QueryContext(ctx, statement)
 	helper.PanicIfError(err)
 	defer rows.Close()

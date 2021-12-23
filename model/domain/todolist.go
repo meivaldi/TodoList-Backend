@@ -5,5 +5,5 @@ type TodoList struct {
 	Title       string
 	Description string
 	Thumbnail   string
-	Priority    int32
+	Priority    int
 }

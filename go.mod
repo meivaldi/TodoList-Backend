@@ -5,13 +5,17 @@ go 1.17
 require (
 	9fans.net/go v0.0.0-20181112161441-237454027057 // indirect
 	github.com/BurntSushi/toml v0.4.1 // indirect
+	github.com/go-playground/locales v0.14.0 // indirect
+	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.9.0 // indirect
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/josharian/impl v1.1.0 // indirect
 	github.com/julienschmidt/httprouter v1.3.0 // indirect
+	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/rogpeppe/godef v1.1.2 // indirect
 	github.com/sergi/go-diff v1.1.0 // indirect
+	golang.org/x/crypto v0.0.0-20210711020723-a769d52b0f97 // indirect
 	golang.org/x/mod v0.5.1 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/sys v0.0.0-20211019181941-9d821ace8654 // indirect
