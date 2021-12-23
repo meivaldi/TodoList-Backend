@@ -3,7 +3,9 @@ package main
 import (
 	"backend_go/app"
 	"backend_go/controller"
+	"backend_go/exception"
 	"backend_go/helper"
+	"backend_go/middleware"
 	"backend_go/repository"
 	"backend_go/service"
 	"net/http"
@@ -29,9 +31,11 @@ func main() {
 	router.PUT("/api/todolist/:todoListId", todoListController.Update)
 	router.DELETE("/api/todolist/:todoListId", todoListController.Delete)
 
+	router.PanicHandler = exception.ErrorHandler
+
 	server := http.Server{
 		Addr:    "localhost:3000",
-		Handler: router,
+		Handler: middleware.NewAuthMiddleware(router),
 	}
 
 	err := server.ListenAndServe()

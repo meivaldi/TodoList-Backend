@@ -1,6 +1,7 @@
 package service
 
 import (
+	"backend_go/exception"
 	"backend_go/helper"
 	"backend_go/model/domain"
 	"backend_go/model/web"
@@ -54,7 +55,9 @@ func (service *TodoListServiceImpl) Update(ctx context.Context, request web.Todo
 	defer helper.CommitOrRollback(tx)
 
 	todoList, err := service.TodoListRepository.FindById(ctx, tx, request.Id)
-	helper.PanicIfError(err)
+	if err != nil {
+		panic(exception.NewNotFoundError(err.Error()))
+	}
 
 	//update field
 	todoList.Title = request.Title
@@ -73,7 +76,9 @@ func (service *TodoListServiceImpl) Delete(ctx context.Context, todoListId int) 
 	defer helper.CommitOrRollback(tx)
 
 	todoList, err := service.TodoListRepository.FindById(ctx, tx, todoListId)
-	helper.PanicIfError(err)
+	if err != nil {
+		panic(exception.NewNotFoundError(err.Error()))
+	}
 
 	service.TodoListRepository.Delete(ctx, tx, todoList)
 }
@@ -84,7 +89,9 @@ func (service *TodoListServiceImpl) FindById(ctx context.Context, todoListId int
 	defer helper.CommitOrRollback(tx)
 
 	todoList, err := service.TodoListRepository.FindById(ctx, tx, todoListId)
-	helper.PanicIfError(err)
+	if err != nil {
+		panic(exception.NewNotFoundError(err.Error()))
+	}
 
 	return helper.ToTodoListResponse(todoList)
 }

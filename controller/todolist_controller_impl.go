@@ -27,7 +27,7 @@ func (controller *TodoListControllerImpl) Create(writter http.ResponseWriter, re
 	todoListResponse := controller.TodoListService.Create(request.Context(), todoListCreateRequest)
 	webResponse := web.WebResponse{
 		Code:   200,
-		Status: "Ok",
+		Status: "OK",
 		Data:   todoListResponse,
 	}
 
@@ -46,7 +46,7 @@ func (controller *TodoListControllerImpl) Update(writter http.ResponseWriter, re
 	todoListResponse := controller.TodoListService.Update(request.Context(), todoListUpdateRequest)
 	webResponse := web.WebResponse{
 		Code:   200,
-		Status: "Ok",
+		Status: "OK",
 		Data:   todoListResponse,
 	}
 
@@ -61,7 +61,7 @@ func (controller *TodoListControllerImpl) Delete(writter http.ResponseWriter, re
 	controller.TodoListService.Delete(request.Context(), id)
 	webResponse := web.WebResponse{
 		Code:   200,
-		Status: "Ok",
+		Status: "OK",
 	}
 
 	helper.WriteToResponseBody(writter, webResponse)
@@ -75,7 +75,7 @@ func (controller *TodoListControllerImpl) FindById(writter http.ResponseWriter, 
 	todoListResponse := controller.TodoListService.FindById(request.Context(), id)
 	webResponse := web.WebResponse{
 		Code:   200,
-		Status: "Ok",
+		Status: "OK",
 		Data:   todoListResponse,
 	}
 
@@ -86,7 +86,7 @@ func (controller *TodoListControllerImpl) FindAll(writter http.ResponseWriter, r
 	todoListResponses := controller.TodoListService.FindAll(request.Context())
 	webResponse := web.WebResponse{
 		Code:   200,
-		Status: "Ok",
+		Status: "OK",
 		Data:   todoListResponses,
 	}
 
